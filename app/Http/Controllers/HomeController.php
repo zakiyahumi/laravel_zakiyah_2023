@@ -2,20 +2,19 @@
  
 namespace App\Http\Controllers;
  
+use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
- 
+use Illuminate\Support\Facades\DB;
+
+
 class HomeController extends Controller
 {
-    public function index(){
-    	return view('biodata');
-    }
-    public function home(){
-    	return view('home');
-    }
-    public function about(){
-    	return view('about');
-    }
-    public function contact(){
-    	return view('contact');
+  
+  
+    public function index()
+    {
+        
+        $data = DB::table('mahasiswas')->get();
+        return view('mahasiswa.index')->with('data', $data);
     }
 }
